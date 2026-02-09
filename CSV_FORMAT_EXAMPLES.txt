@@ -1,0 +1,124 @@
+################################################################################
+# CSV FORMAT EXAMPLES FOR DIFFERENT FOLDER DEPTHS
+################################################################################
+
+## EXAMPLE 1: 3 LEVELS (Your PILOT Projects) ✅
+
+Folder 1,Folder 2,Folder 3,NEW NOMENCLATURE
+UNILEVER,PILOT Projects,Category Model_SheaMoisture,LCA-BASE01-CAT+RETAIL_SheaMoisture
+UNILEVER,PILOT Projects,DMCs Pilot with POEM365,LCA-BASE01-CAT+RETAIL_DMC
+
+Path structure:
+UNILEVER → PILOT Projects → [Folder 3 gets renamed]
+
+---
+
+## EXAMPLE 2: 5 LEVELS (Regular Level-5 folders) ✅
+
+Folder 1,Folder 2,Folder 3,Folder 4,Folder 5,NEW NOMENCLATURE
+UNILEVER,02. PC,Skin Cleansing,PW Dove,ST,INC13_Old_Name,INC13_New_Name
+UNILEVER,02. PC,Skin Cleansing,PW Dove,ST,INC14_Old_Name,INC14_New_Name
+
+Path structure:
+UNILEVER → 02. PC → Skin Cleansing → PW Dove → ST → [Folder 5 gets renamed]
+
+---
+
+## EXAMPLE 3: 6 LEVELS (Deep structure) ✅
+
+Folder 1,Folder 2,Folder 3,Folder 4,Folder 5,Folder 6,NEW NOMENCLATURE
+UNILEVER,02. PC,Deodorant,Deo Dove,ST,L1.DATA,L1.DATA_v2
+UNILEVER,02. PC,Deodorant,Deo Dove,ST,L1.AI,L1.AI_v2
+
+Path structure:
+UNILEVER → 02. PC → Deodorant → Deo Dove → ST → [Folder 6 gets renamed]
+
+---
+
+## EXAMPLE 4: 7 LEVELS ✅
+
+Folder 1,Folder 2,Folder 3,Folder 4,Folder 5,Folder 6,Folder 7,NEW NOMENCLATURE
+UNILEVER,03. BnW,Hair Care,Brand A,Product Line,2024,Q1,Q1_Reports,Q1_Reports_Final
+
+Path structure:
+UNILEVER → 03. BnW → Hair Care → Brand A → Product Line → 2024 → Q1 → [Folder 7 gets renamed]
+
+---
+
+## EXAMPLE 5: 8 LEVELS (Very deep) ✅
+
+Folder 1,Folder 2,Folder 3,Folder 4,Folder 5,Folder 6,Folder 7,Folder 8,NEW NOMENCLATURE
+UNILEVER,04. NIC,Foods,Mayo,North America,2024,Q1,January,Week1,Week1_Jan_2024
+
+Path structure:
+UNILEVER → 04. NIC → Foods → Mayo → North America → 2024 → Q1 → January → [Folder 8 gets renamed]
+
+---
+
+## KEY RULES FOR CSV FORMAT:
+
+✅ **Column Names:**
+- Must be: Folder 1, Folder 2, Folder 3, Folder 4, ... (with space and number)
+- Must end with: NEW NOMENCLATURE (exactly as written)
+
+✅ **Folder Depth:**
+- Can be 3, 4, 5, 6, 7, 8, or more levels
+- Script auto-detects the depth
+- No code changes needed!
+
+✅ **What Gets Renamed:**
+- The LAST "Folder X" column is the folder that gets renamed
+- All previous columns form the path to that folder
+- NEW NOMENCLATURE is the new name
+
+✅ **Example Breakdown:**
+
+CSV: Folder 1, Folder 2, Folder 3, Folder 4, Folder 5, NEW NOMENCLATURE
+Data: UNILEVER, 02. PC, Skin Cleansing, PW Dove, INC13_Old, INC13_New
+
+Result:
+- Path: UNILEVER/02. PC/Skin Cleansing/PW Dove/
+- Rename: INC13_Old → INC13_New
+- New Path: UNILEVER/02. PC/Skin Cleansing/PW Dove/INC13_New
+
+---
+
+## SAMPLE CSV FILES YOU CAN CREATE:
+
+### Sample 1: Rename_3Levels.csv
+```csv
+Folder 1,Folder 2,Folder 3,NEW NOMENCLATURE
+UNILEVER,PILOT Projects,Old1,New1
+UNILEVER,PILOT Projects,Old2,New2
+```
+
+### Sample 2: Rename_5Levels.csv
+```csv
+Folder 1,Folder 2,Folder 3,Folder 4,Folder 5,NEW NOMENCLATURE
+UNILEVER,02. PC,Skin Cleansing,PW Dove,ST,Old1,New1
+UNILEVER,02. PC,Skin Cleansing,PW Dove,ST,Old2,New2
+```
+
+### Sample 3: Rename_6Levels.csv
+```csv
+Folder 1,Folder 2,Folder 3,Folder 4,Folder 5,Folder 6,NEW NOMENCLATURE
+UNILEVER,02. PC,Deodorant,Deo Dove,ST,L1.DATA,New_L1_DATA
+UNILEVER,02. PC,Deodorant,Deo Dove,ST,L1.AI,New_L1_AI
+```
+
+---
+
+## HOW TO USE:
+
+1. Create your CSV with the correct number of "Folder X" columns
+2. Last folder column = folder to rename
+3. Add NEW NOMENCLATURE column with new names
+4. Save CSV
+5. Update script line 21 with CSV path
+6. Run script
+
+**The script automatically detects folder depth - no code changes needed!**
+
+################################################################################
+# END OF EXAMPLES
+################################################################################
